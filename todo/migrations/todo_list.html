@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <a href="{% url 'add_todo' %}">Add New Item</a>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.title }} - 
+                {% if item.completed %}
+                    Completed
+                {% else %}
+                    Not Completed
+                    <a href="{% url 'toggle_complete' item.pk %}">Mark as Completed</a>
+                {% endif %}
+                <a href="{% url 'edit_todo' item.pk %}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
